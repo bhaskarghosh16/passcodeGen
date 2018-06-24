@@ -26,7 +26,8 @@ public class Passcode {
 		Random random = new Random();
 		Date now = new Date();
 		int num = random.nextInt(8);
-		return this.getGameName()+specialCharSet[num]+this.getYear()+" -- Built via jenkins : "+now;
+		return "Test Github Jenkins Integration";
+		//return this.getGameName()+specialCharSet[num]+this.getYear()+" -- Built via jenkins : "+now;
 	}
 	
 	 

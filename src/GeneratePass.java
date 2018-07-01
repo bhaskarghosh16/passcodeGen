@@ -16,7 +16,7 @@ public class GeneratePass {
 		gGenerate.setLimit(5);
 		
 		try {
-			System.out.println(gGenerate.generateListbyLimit());
+			gGenerate.generateListbyLimit();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

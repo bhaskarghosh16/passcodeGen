@@ -1,8 +1,8 @@
 package com.gameanalyzer.gameList;
 
-import java.io.File;
+
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -30,17 +30,28 @@ public class GameListGenerator {
 			{
 				games = new ArrayList<HashMap<String, Integer>>();
 			}
-			//File file = new File();
+			try {
 
-		    try {
-
-		        Scanner sc = new Scanner(Paths.get("src/gameList.txt"));
-
+		        Scanner sc = new Scanner(Paths.get("./src/resources/files/gameList.txt"));
+					
+				//sc.nextLine();sc.nextLine();
 		        while (sc.hasNextLine() && limit >0) {
-		            String name = sc.nextLine();
-		            HashMap<String, Integer> thisgame = new HashMap<>();
-		            thisgame.put(name, 1970);
-		            games.add(thisgame);
+		        	
+		            String gameLine = sc.nextLine();
+		            String name = gameLine.substring(0, gameLine.indexOf('('));
+		            
+		            String secondtuple = gameLine.substring(gameLine.indexOf('(')+1,gameLine.indexOf(')'));
+		           
+		            int year = Integer.parseInt(secondtuple.split(",")[0]);
+		            String publisher = secondtuple.split(",")[1];
+		            gameLine = gameLine.replace(name+"("+secondtuple+")", " ");
+		            String platform = gameLine.substring(gameLine.indexOf("(")+1,gameLine.indexOf(")"));
+		            Game game = new Game();
+		            game.setGameName(name);
+		            game.setPublisher(publisher);
+		            game.setYear(year);
+		            game.setPlatform(platform);
+		            System.out.println(game);
 		            limit--;
 		        }
 		        sc.close();

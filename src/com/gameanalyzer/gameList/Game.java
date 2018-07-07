@@ -1,5 +1,7 @@
 package com.gameanalyzer.gameList;
 
+import java.util.Iterator;
+
 public class Game {
 	private String gameName;
 	private int year;
@@ -34,6 +36,7 @@ public class Game {
 		return "Game [gameName=" + gameName + ", year=" + year + ", platform=" + platform + ", publisher=" + publisher
 				+ "]";
 	}
+	
 	
 
 }

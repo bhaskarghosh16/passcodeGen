@@ -2,11 +2,12 @@ package com.gameanalyzer.gameList;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
-public class GameList implements Serializable {
-	private List<Game> allGames;
 
+
+public class GameList { 
 	public List<Game> getAllGames() {
 		return allGames;
 	}
@@ -15,13 +16,7 @@ public class GameList implements Serializable {
 		this.allGames = allGames;
 	}
 
-	@Override
-	public String toString() {
-		
-		return "GameList [allGames Count=" + allGames.size() + "]";
-	}
-	
-	
-	
+	private List<Game> allGames;
+
 
 }

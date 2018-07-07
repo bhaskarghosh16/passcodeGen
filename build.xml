@@ -1,5 +1,6 @@
 <?xml version = "1.0"?>
-<project name = "Passcode generator" default = "build">
+<project name = "GameAnalyzer" default = "build">
+	<echo>Initiating Jenkins build</echo>
 <property name = "src.dir" value = "src"/>
 <property name = "build.dir" value = "build"/>
 <target name = "clean" description = "Clean output directories">
@@ -9,15 +10,21 @@
       </fileset>
    </delete>
 </target>
+	<echo>---Building---</echo>
+	
 <target name = "build" description = "Compile main source tree java files">
    <delete dir="build"/>
+	<echo>Build directory deleted</echo>
    <mkdir dir = "${build.dir}"/>
+	<echo>New build directory created</echo>
 
    <javac destdir = "${build.dir}"  debug = "true"
       deprecation = "false" optimize = "false" failonerror = "true">
       <src path = "${src.dir}"/>
+   	<echo>Source file found. Compiling</echo>
       <!--<classpath refid = "master-classpath"/>-->
    </javac>
+	
 </target>
   <target name = "info">
       <echo>Hello World - Welcome to Apache Ant! ${ant.version}</echo>

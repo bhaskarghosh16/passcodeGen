@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import com.oracle.tools.packager.Log;
+
 public class GameListGenerator {
 	private int limit;
 
@@ -24,20 +26,17 @@ public class GameListGenerator {
 	public GameList generateListbyLimit() throws IOException {
 		int limit = this.getLimit();
 		GameList gList = new GameList();
-		List<HashMap<String, Integer>> games;
-		games = gList.getGamesWithYear();
-			if (games == null)
-			{
-				games = new ArrayList<HashMap<String, Integer>>();
-			}
+		int countSkip =0;
+		
 			try {
 
-		        Scanner sc = new Scanner(Paths.get("./src/resources/files/gameList.txt"));
+		        Scanner sc = new Scanner(Paths.get("./src/resources/files/gameListMaster.txt"));
 					
 				//sc.nextLine();sc.nextLine();
 		        while (sc.hasNextLine() && limit >0) {
 		        	
 		            String gameLine = sc.nextLine();
+		            try {
 		            String name = gameLine.substring(0, gameLine.indexOf('('));
 		            
 		            String secondtuple = gameLine.substring(gameLine.indexOf('(')+1,gameLine.indexOf(')'));
@@ -53,15 +52,19 @@ public class GameListGenerator {
 		            game.setPlatform(platform);
 		            System.out.println(game);
 		            limit--;
+		            }catch(Exception e) {
+		            	//Log.getLogger().error(e.getMessage());
+		            	countSkip++;
+		            	continue;
+		            }
 		        }
 		        sc.close();
 		    } 
 		    catch (FileNotFoundException e) {
 		        e.printStackTrace();
 		    }
-		    gList.setGamesWithYear(games);
-			
-		
+		    
+		System.out.println(countSkip);
 		
 		return gList;
 		

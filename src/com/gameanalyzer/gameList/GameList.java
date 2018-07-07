@@ -1,28 +1,26 @@
 package com.gameanalyzer.gameList;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-public class GameList {
-	private List<HashMap<String,Integer>> gamesWithYear;
-	public List<HashMap<String, Integer>> getGamesWithYear() {
-		return gamesWithYear;
+public class GameList implements Serializable {
+	private List<Game> allGames;
+
+	public List<Game> getAllGames() {
+		return allGames;
 	}
-	public void setGamesWithYear(List<HashMap<String, Integer>> gamesWithYear) {
-		this.gamesWithYear = gamesWithYear;
+
+	public void setAllGames(List<Game> allGames) {
+		this.allGames = allGames;
 	}
-	private String gameName;
-	
-	public String getGameName() {
-		return gameName;
-	}
-	public void setGameName(String gameName) {
-		this.gameName = gameName;
-	}
+
 	@Override
 	public String toString() {
-		return "GameList [gamesWithYear=" + gamesWithYear + "]";
+		
+		return "GameList [allGames Count=" + allGames.size() + "]";
 	}
+	
 	
 	
 

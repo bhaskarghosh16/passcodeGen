@@ -21,7 +21,7 @@
    <javac destdir = "${build.dir}"  debug = "true"
       deprecation = "false" optimize = "false" failonerror = "true">
       <src path = "${src.dir}"/>
-   	<echo>Source file found. Compiling</echo>
+   
       <!--<classpath refid = "master-classpath"/>-->
    </javac>
 	

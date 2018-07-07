@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.gameanalyzer.dao.MongoDao;
 import com.gameanalyzer.gameList.GameList;
 import com.gameanalyzer.gameList.GameListGenerator;
 
@@ -14,7 +15,9 @@ public class GameAnalyzer {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 
-		GameListGenerator gGenerate = new GameListGenerator();
+		MongoDao mongo = new MongoDao();
+		mongo.insertCollection();
+		/*GameListGenerator gGenerate = new GameListGenerator();
 		
 		gGenerate.setLimit(10);
 		
@@ -26,22 +29,11 @@ public class GameAnalyzer {
 			o.close();
 			f.close();
 			
-//			FileInputStream fi = new FileInputStream(new File("myGamesList.txt"));
-//			ObjectInputStream oi = new ObjectInputStream(fi);
-//
-//			// Read objects
-//		GameList gL = (GameList) oi.readObject();
-//			
-//
-//			System.out.println(gL);
-//		
-//
-//			oi.close();
-//			fi.close();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
